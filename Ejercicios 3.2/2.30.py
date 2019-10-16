@@ -2,67 +2,69 @@
 #calendario
 
 mes=input("Introduzca el mes: ")
-mes31=['Enero', 'Marzo', 'Mayo', 'Julio','Agosto', 'Octubre', 'Diciembre']
-mes30=['Abril', 'Junio', 'Septiembre', 'Noviembre']
-if mes in mes31:
-    a=32
-elif mes in mes30:
-    a=31
-elif mes=="Febrero":
-    a=29
-
-if mes=="Enero" or mes=="Febrero" or mes=="Marzo" or mes=="Abril" or mes=="Mayo" or mes=="Junio" or mes=="Julio" or mes=="Agosto" or mes=="Septiembre" or mes=="Octubre" or mes=="Noviembre" or mes=="Diciembre":
+m31=['enero', 'marzo', 'mayo', 'julio','agosto', 'octubre', 'diciembre']
+m30=['abril', 'junio', 'septiembre', 'noviembre']
+try:
+    if str.lower(mes) in m31:
+        d=31
+    elif str.lower(mes) in m30:
+        d=30
+    elif str.lower(mes) =="febrero":
+        d=28
+    else: 
+        d=int(mes)
+except ValueError:
+    print("Error al introducir el mes")
+else:
     dia=input("Introduzca el dia de la semana en el que empieza este mes: ")
     print(mes, '\nL\tM\tX\tJ\tV\tS\tD')
-    if dia=="Lunes" or dia=="lunes" or dia=="L":
-        for i in range(1,a):
+    if str.lower(dia) == 'lunes' or str.lower(dia)=="l":
+        for i in range(1,d+1):
             if i==7 or i==14 or i==21 or i==28:
                 print (i, end='\n')
             else:
                 print(i, end='\t')
-    elif dia=="Martes" or dia=="martes" or dia=="M":
+    elif str.lower(dia)=="martes" or str.lower(dia)=="m":
         print ('\t', end="")
-        for i in range(1,a):
+        for i in range(1,d+1):
             if i==7-1 or i==14-1 or i==21-1 or i==28-1:
                 print (i, end='\n')
             else:
                 print(i, end='\t')
-    elif dia=="Miercoles" or dia=="miercoles" or dia=="X":
+    elif str.lower(dia)=="miercoles" or str.lower(dia)=="x":
         print ('\t \t', end="")
-        for i in range(1,a):
+        for i in range(1,d+1):
             if i==7-2 or i==14-2 or i==21-2 or i==28-2:
                 print (i, end='\n')
             else:
                 print(i, end='\t')
-    elif dia=="Jueves" or dia=="jueves" or dia=="J":
+    elif str.lower(dia)=="jueves" or str.lower(dia)=="j":
         print ('\t \t \t', end="")
-        for i in range(1,a):
+        for i in range(1,d+1):
             if i==7-3 or i==14-3 or i==21-3 or i==28-3:
                 print (i, end='\n')
             else:
                 print(i, end='\t')
-    elif dia=="Viernes" or dia=="viernes" or dia=="V":
+    elif str.lower(dia)=="viernes" or str.lower(dia)=="v":
         print ('\t \t \t \t', end="")
-        for i in range(1,a):
+        for i in range(1,d+1):
             if i==7-4 or i==14-4 or i==21-4 or i==28-4:
                 print (i, end='\n')
             else:
                 print(i, end='\t')
-    elif dia=="Sabado" or dia=="sabado" or dia=="S":
+    elif str.lower(dia)=="sabado" or str.lower(dia)=="s":
         print ('\t \t \t \t \t', end="")
-        for i in range(1,a):
+        for i in range(1,d+1):
             if i==7-5 or i==14-5 or i==21-5 or i==28-5:
                 print (i, end='\n')
             else:
                 print(i, end='\t')
-    elif dia=="Domingo" or dia=="domingo" or dia=="D":
+    elif str.lower(dia)=="domingo" or str.lower(dia)=="d":
         print ('\t \t \t \t \t \t', end="")
-        for i in range(1,a):
+        for i in range(1,d+1):
             if i==7-6 or i==14-6 or i==21-6 or i==28-6:
                 print (i, end='\n')
             else:
                 print(i, end='\t')
     else:
-        print("Eso no")
-else:
-    print("No")
+            print("Error al introducir el dia")
