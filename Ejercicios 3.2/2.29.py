@@ -27,4 +27,18 @@ if dinero/1>1:
     print("1 moneda de 1€")
     dinero= dinero - int(dinero)
 if dinero/0.5>1:
-        print
+    dinero = dinero % 0.5
+if dinero/0.2>1:
+    print (dinero // 0.2," monedas de 20 centimos")
+    dinero = dinero % 0.2
+if dinero/0.1>1:
+    print("1 moneda de 10 centimos")
+    dinero = dinero % 0.1
+if dinero/0.05>1:
+    print("1 modena de 5 centimos")
+    dinero = dinero % 0.05
+if dinero/0.02>1:
+    print(dinero // 0.02,"monedas de 2 centimos")
+    dinero = dinero % 0.02
+if dinero/0.01>1:
+    print("1 moneda de 1 centimo")
