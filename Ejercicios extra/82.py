@@ -1,6 +1,6 @@
 
 def introducir(x):
-    for i in range(5):
+    for _ in range(5):
         x.append(str.lower(input("Introduzca la palabra:\t")))
     return(x)
 
