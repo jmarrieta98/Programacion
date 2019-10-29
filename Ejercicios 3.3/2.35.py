@@ -1,3 +1,5 @@
+#dibuja un arbol de navidad y según el número que introduzcas será mas grande o mas chico 
+# y si no es un numero dibuja un arbol de 3
 try:
     n=int(input("numero "))
 except:
