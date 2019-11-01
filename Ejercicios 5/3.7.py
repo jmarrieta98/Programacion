@@ -7,8 +7,7 @@ def fecha(d,m,a):
             return "fecha incorrecta"
         elif m==2 and d <= 29:
                 return "fecha correcta"
-
-        if m in m30 and d <= 30:
+        elif m in m30 and d <= 30:
             return "fecha correcta"
         elif m in m31 and d <=31:
             return "fecha correcta"
