@@ -1,9 +1,14 @@
+#Creamos una variable de altura que no sea 0 
+# vamos inctruduciendo en una lista las alturas hasta que sea 0 mediante un buvle while 
+# Creamos diferentes variables para las diferentes alturas y recorremos la lista con un for y dependiendo de la condicion que sea suma uno al contador de la altura
+#imprimir los contadores y las alturas
 altura = 1
 alturas=[]
 while altura != 0:
     altura = float(input("Introduce la altura: "))
-    alturas.append(altura)
-alturas.remove(0)
+    if altura != 0:
+        alturas.append(altura)
+
 mas17 = mas16 = mas15 = menos15 = 0
 for i in alturas:
     if i> 1.70:
