@@ -1,5 +1,5 @@
 #Creamos una variable de altura que no sea 0 
-# vamos inctruduciendo en una lista las alturas hasta que sea 0 mediante un buvle while 
+# vamos inctruduciendo en una lista las alturas hasta que sea 0 mediante un bucle while 
 # Creamos diferentes variables para las diferentes alturas y recorremos la lista con un for y dependiendo de la condicion que sea suma uno al contador de la altura
 #imprimir los contadores y las alturas
 altura = 1
