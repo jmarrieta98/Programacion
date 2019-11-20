@@ -6,7 +6,7 @@ except:
 else:
     if  len(ip)==4:
         try:
-            if int(ip[0]) >=0 and int(ip[0]) <= 255 and int(ip[1]) >=0 and int(ip[1]) <= 255 and int(ip[2]) >=0 and int(ip[2]) <= 255 and int(ip[3]) >=0 and int(ip[3]) <= 255:
+            if int(ip[0]) in range(0, 256) and int(ip[1]) in range(0, 256) and int(ip[2]) in range(0, 256) and int(ip[3]) in range(0, 256):
                 print("Correcto")
             else:
                 print("Valores fuera de rango")
