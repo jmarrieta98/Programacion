@@ -6,11 +6,10 @@ def eliminar_extremos(lista):
 def valoracion(lista):
     media = 0
     lista=eliminar_extremos(sorted(lista))
-    print(lista)
     for i in lista:
         media+=i
     return media/len(lista)
 
 if __name__=="__main__":
     lista=[3,2,1,4,8,7,6,5]
-    print(valoracion(lista))
+    print(eliminar_extremos(lista))
