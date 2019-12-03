@@ -1,4 +1,4 @@
-from Codewars import raizdoble    # The code to test
+import raizdoble    # The code to test
 
 #Run Test|Debug Test
 def t_raiz():
