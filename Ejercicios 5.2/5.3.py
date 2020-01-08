@@ -1,7 +1,4 @@
-diccionario={
-
-}
-
+diccionario={}
 if __name__ == "__main__":    
     with open('archivo2.csv') as f: 
         lis = [x.split() for x in f] 
