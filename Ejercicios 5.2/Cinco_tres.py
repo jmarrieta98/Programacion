@@ -1,6 +1,7 @@
-diccionario={}
+
 
 def leer (archivo):
+    diccionario={}
     with open(archivo) as f: 
         lis = [x.split() for x in f] 
     claves = lis.pop(0)
@@ -9,6 +10,7 @@ def leer (archivo):
     for i in lis:
         for j in range(len(i)):
             diccionario[claves[j]].append(i[j])
+    f.close
     return (diccionario)
 
 if __name__ == "__main__":    
