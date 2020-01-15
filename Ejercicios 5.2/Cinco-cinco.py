@@ -18,5 +18,17 @@ def leer (archivo):
 
 if __name__ == "__main__":
     while True:
-        print(leer(".\Archivos\ListadoEstaciones2018-08.csv"))
-        break
+        diccionario=leer(".\Archivos\ListadoEstaciones2018-08.csv")
+        for estacion, temperatura in diccionario.items():
+            print(f"{estacion}: ", end="")
+            for i in temperatura:
+                print(f"{i}",end=" ")
+            print("")
+        ciudad = input("Introduce la estacion a guardar o salir:\t")
+        if ciudad == 'salir':
+            break
+        elif diccionario[ciudad]:
+            with open("Archivos\Aemet2018-12-31.csv",'w') as archivo:
+                archivo.write(str(ciudad)+" \t")
+                archivo.write(str(diccionario[ciudad]))
+                archivo.close
