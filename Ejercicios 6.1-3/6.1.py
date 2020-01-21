@@ -1,7 +1,3 @@
-#Operadores de comparación
-#== object.__eq__(self, other)
-#!= object.__ne__(self, other)
-
 import math
 class Fraccion:
     def __init__(self, numerador, denominador=1):
@@ -99,6 +95,7 @@ class Fraccion:
             return True
         else:
             return False
+
 if __name__ == "__main__":
     x=Fraccion(3,4)
     y=Fraccion(1,3)
