@@ -46,7 +46,6 @@ class Mazo:
         return (len(self.cartas) == 0)
 
 
-
 class Mano:
     def __init__(self):
         self.cartas = []
@@ -57,15 +56,15 @@ class Mano:
         self.calcularvalortotal()
 
     def calcularvalortotal(self):
-            if self.cartas[-1].valor == 'Sota' or self.cartas[-1].valor == 'Reina' or self.cartas[-1].valor == 'Rey':
-                self.valortotal += 10
-            elif self.cartas[-1].valor == 'As':
-                if self.valortotal + 11 > 21:
-                    self.valortotal+=1
-                else:
-                    self.valortotal+=11
+        if self.cartas[-1].valor == 'Sota' or self.cartas[-1].valor == 'Reina' or self.cartas[-1].valor == 'Rey':
+            self.valortotal += 10
+        elif self.cartas[-1].valor == 'As':
+            if self.valortotal + 11 > 21:
+                self.valortotal += 1
             else:
-                self.valortotal += int(self.cartas[-1].valor)
+                self.valortotal += 11
+        else:
+            self.valortotal += int(self.cartas[-1].valor)
 
 
 if __name__ == "__main__":
@@ -73,19 +72,46 @@ if __name__ == "__main__":
     jugador = Mano()
     maquina = Mano()
     jugador.cogercarta(mazo)
-    print(f"Tu carta es {jugador.cartas[0]} y el valor total es {jugador.valortotal}")
+    print(
+        f"Tu carta es {jugador.cartas[0]} y el valor total es {jugador.valortotal}")
     while True:
         opcion = input("¿Quieres coger otra carta?\t")
         if opcion.lower() == 's' or opcion.lower() == 'si':
             jugador.cogercarta(mazo)
-            print("Tus cartas son ",end='')
+            print("Tus cartas son ", end='')
             for i in jugador.cartas:
-                print(i,end=", ")
+                print(i, end=", ")
             print(f"valor total : {jugador.valortotal}")
         elif opcion.lower() == 'n' or opcion.lower() == 'no':
             break
         else:
             print("Opcion no validad")
             continue
-        if jugador.valortotal == 21:
+        if jugador.valortotal >= 21:
             break
+    while True:
+        maquina.cogercarta(mazo)
+        if maquina.valortotal >= 18:
+            break
+    if jugador.valortotal > 21:
+        print("Has perdido, te has pasado")
+        print(f"Jugador {jugador.valortotal} - Maquina {maquina.valortotal}")
+    elif jugador.valortotal == 21 and maquina.valortotal == 21:
+        print("Empate a blackjack")
+        print(f"Jugador {jugador.valortotal} - Maquina {maquina.valortotal}")
+    elif jugador.valortotal == 21 and (maquina.valortotal < 21 or  maquina.valortotal > 21):
+        print("Blackjack, has ganado")
+        print(f"Jugador {jugador.valortotal} - Maquina {maquina.valortotal}")
+    elif jugador.valortotal <21 and maquina.valortotal == 21:
+        print("Has perdido, blackjack de la maquina")
+        print(f"Jugador {jugador.valortotal} - Maquina {maquina.valortotal}")
+    elif jugador.valortotal < 21 and maquina.valortotal < 21:
+        if jugador.valortotal > maquina.valortotal:
+            print("Has ganado, estas mas cerca del blackjack que la maquina")
+            print(f"Jugador {jugador.valortotal} - Maquina {maquina.valortotal}")
+        elif jugador.valortotal < maquina.valortotal:
+            print("Has perdido, la maquina se ha acercado mas al blackjack")
+            print(f"Jugador {jugador.valortotal} - Maquina {maquina.valortotal}")
+        else:
+            print("Empate")
+            print(f"Jugador {jugador.valortotal} - Maquina {maquina.valortotal}")
