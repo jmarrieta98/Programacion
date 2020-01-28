@@ -68,3 +68,4 @@ if __name__ == "__main__":
             if str(opcion[0]).lower() == 'mostrar':
                 baloncesto.mostrar()
             if str(opcion[0]).lower() == "fin":
+                break
