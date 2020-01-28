@@ -1,10 +1,9 @@
-import datetime, calendar
-
-equipos= [ 'CHB', 'CAW', 'CSU', 'CSU', 'VIB', 'CHE']
+import os
+equipos= [ 'CHB', 'CAW', 'CSU', 'COS', 'VIB', 'CHE']
 traduccion = {
     'CHB' : ['chiclana blues','chiclana','blues','chb'],
     'CAW' : ['cádiz wheels','cádiz','wheels','caw'],
-    'CSU' : ['caleta surfers','celta','surfers','csu'],
+    'CSU' : ['caleta surfers','caleta','surfers','csu'],
     'COS' : ['conil suns','conil','suns','cos'],
     'VIB' : ['victoria bedouins','victoria','bedouins','vib'],
     'CHE' : ['cortadura hearts','cortadura','hearts','che']
@@ -38,15 +37,42 @@ class liga:
         for i in equipos:
             self.equipos.append(Equipo(i))
     def mostrar(self):
-        self.equipos = sorted(self.equipos, key=lambda objeto: objeto.marcador)
+        self.equipos = sorted(self.equipos, key=lambda objeto: objeto.marcador, reverse=True)
         print('Nombre\tP.J.\tP.G\tP.P\tP.A.F\tP.E.C\tMarcador')
         for i in self.equipos:
             print(i)
-    def insertar(self,equipo1,equipo2,marcador1,marcador2)
+    def insertar(self,equipo1,equipo2,marcador1,marcador2):
+        if marcador2 > marcador1:
+            for i in self.equipos:
+                if i.nombre == equipo2:
+                    i.partidosjugados+=1
+                    i.partidosganados+=1
+                    i.puntosafavor+=marcador2
+                    i.puntosencontra+=marcador1
+                    i.marcador+=3
+                if i.nombre == equipo1:
+                    i.partidosjugados+=1
+                    i.partidosperdidos+=1
+                    i.puntosafavor+=marcador1
+                    i.puntosencontra+=marcador2
+        elif marcador1 > marcador2:
+            for i in self.equipos:
+                if i.nombre == equipo1:
+                    i.partidosjugados+=1
+                    i.partidosganados+=1
+                    i.puntosafavor+=marcador1
+                    i.puntosencontra+=marcador2
+                    i.marcador+=3
+                if i.nombre == equipo2:
+                    i.partidosjugados+=1
+                    i.partidosperdidos+=1
+                    i.puntosafavor+=marcador2
+                    i.puntosencontra+=marcador1
 
 if __name__ == "__main__":
     baloncesto = liga()
     while True:
+        
         opcion = input("Introduzca una opcion:\t")
         opcion = opcion.split('\t')
         if len(opcion) == 2:
@@ -59,7 +85,10 @@ if __name__ == "__main__":
                     equipo1=" ".join(equipo1)
                     equipo2=" ".join(equipo2)
                     equipo1,equipo2=traducir(equipo1.lower(),equipo2.lower(),traduccion)
-                    print(f"{equipo1}: {marcador1}\t{equipo2}: {marcador2}")
+                    if marcador1 == marcador2:
+                        print("Error los partidos no pueden quedar en empate")
+                    else:
+                        baloncesto.insertar(equipo1,equipo2,int(marcador1),int(marcador2))
                 else: 
                     print("Los resultados no pueden ser negativos")
             except ValueError:
@@ -67,5 +96,7 @@ if __name__ == "__main__":
         elif len(opcion) == 1:
             if str(opcion[0]).lower() == 'mostrar':
                 baloncesto.mostrar()
-            if str(opcion[0]).lower() == "fin":
+            elif str(opcion[0]).lower() == 'limpiar':
+                os.system("cls")
+            elif str(opcion[0]).lower() == "fin":
                 break
