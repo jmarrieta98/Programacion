@@ -44,7 +44,7 @@ equipos = {
     'CHE' : ['cortadura hearts','cortadura','hearts','che']
 }
 
-def traducir(eleccion,equipos):
+def traducir(eleccion,equipos2):
     elec=list(equipos.items())
     for i in range(0,len(elec)):
         for j in range(0,len(elec[i][1])):
