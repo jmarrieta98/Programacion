@@ -1,9 +1,7 @@
-
-
-def leer (archivo):
-    diccionario={}
-    with open(archivo) as f: 
-        lis = [x.split() for x in f] 
+def leer(archivo):
+    diccionario = {}
+    with open(archivo) as f:
+        lis = [x.split() for x in f]
     claves = lis.pop(0)
     for i in claves:
         diccionario[i] = []
@@ -13,5 +11,6 @@ def leer (archivo):
     f.close
     return (diccionario)
 
-if __name__ == "__main__":    
+
+if __name__ == "__main__":
     print(leer('.\Archivos\\archivo.csv'))

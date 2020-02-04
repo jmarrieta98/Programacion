@@ -1,4 +1,4 @@
-
+from datetime import date
 lista_nacionalidad = ['Alemania', 'Argentina', 'Australia', 'Bélgica',
                       'Brasil', 'Canadá', 'Chile', 'Dinamarca', 'Egipto', 'España']
 lista_nombre = ['James', 'Emma', 'Alexander', 'Anastasia',
@@ -11,8 +11,18 @@ lista_motor = ['Ferrari', 'Mercedes', 'Ford', 'Renault',
 lista_nombre_escuderias = ['Mercedes', 'Ferrari', 'Red Bull', 'Williams',
                            'McLaren', 'Alpha Tauri', 'Haas', 'Renault', 'Alfa Romeo', 'Racing Point']
 
+
+lista_puntuacion = [25, 18, 15, 10, 8, 6, 5, 3, 2, 1]
+
 lista_pilotos = []
 lista_escuderias = []
+lista_circuito = []
+
+
+def clase_circuito(lista_circuito, lista_nombre_circuito, lista_nacionalidad, lista_puntuacion, lista_nombre):
+    for i in range(10):
+        lista_circuito.append((lista_nombre_circuito[i], lista_nacionalidad[i], date.today(
+        ), lista_puntuacion, lista_nombre))
 
 
 def clase_pilotos(lista_nacionalidad, lista_nombre, lista_pilotos):
@@ -27,6 +37,14 @@ def clase_escuderias(lista_escuderias, lista_nombre_escuderias, lista_motor, lis
             Escuderia(lista_nombre_escuderias[i], lista_motor[i], lista_pilotos[i]))
 
 
+class Circuito:
+    def __init__(self, circuito, pais, fecha, lista_P, lista_N):
+        self.nombre = circuito
+        self.pais = pais
+        self.fecha = fecha
+        self.resultado
+
+
 class Campeonato:
     pass
 
@@ -38,7 +56,7 @@ class Escuderia:
         self.piloto = [piloto]
 
     def __str__(self):
-        escuderia = self.nombre + "-" + self.motor +": "
+        escuderia = self.nombre + "-" + self.motor + ": "
         for i in self.piloto:
             escuderia += f'{i} '
         return escuderia
@@ -54,12 +72,9 @@ class Piloto:
         return f'{self.nombre}, {self.numero}, {self.nacionalidad}'
 
 
-class Circuito:
-    pass
-
-
 if __name__ == "__main__":
     clase_pilotos(lista_nacionalidad, lista_nombre, lista_pilotos)
-    clase_escuderias(lista_escuderias,lista_nombre_escuderias,lista_motor,lista_pilotos)
+    clase_escuderias(lista_escuderias, lista_nombre_escuderias,
+                     lista_motor, lista_pilotos)
     for i in lista_escuderias:
         print(i)

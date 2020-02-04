@@ -22,6 +22,7 @@ def traducir(eq1, eq2, diccionario):
 
 
 class Equipo:
+
     def __init__(self, nombre):
         self.nombre = nombre
         self.partidosjugados = 0
