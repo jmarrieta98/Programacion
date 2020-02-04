@@ -1,4 +1,5 @@
 from datetime import date
+import os
 lista_nacionalidad = ['Alemania', 'Argentina', 'Australia', 'Bélgica',
                       'Brasil', 'Canadá', 'Chile', 'Dinamarca', 'Egipto', 'España']
 lista_nombre = ['James', 'Emma', 'Alexander', 'Anastasia',
@@ -14,6 +15,17 @@ lista_nombre_escuderias = ['Mercedes', 'Ferrari', 'Red Bull', 'Williams',
 
 lista_puntuacion = [25, 18, 15, 10, 8, 6, 5, 3, 2, 1]
 
+lista_nombre_circuito = ["Circuito de Spa-Francorchamps (Bélgica)",
+                         "Circuito de Monza (Italia)",
+                         "Circuito de Suzuka (Japón)",
+                         "Circuito de Sakhir(Bahrein)",
+                         "Circuito de Melbourne(Australia)",
+                         "Circuito de Gilles Villeneuve(Canada)",
+                         "Circuito de Mónaco(Mónaco)",
+                         "Circuito de Istanbul Park(Estambul)",
+                         "Circuito de Sepang(Malasia)",
+                         "Circuito de Interlagos(Brasil)"]
+
 lista_pilotos = []
 lista_escuderias = []
 lista_circuito = []
@@ -21,8 +33,8 @@ lista_circuito = []
 
 def clase_circuito(lista_circuito, lista_nombre_circuito, lista_nacionalidad, lista_puntuacion, lista_nombre):
     for i in range(10):
-        lista_circuito.append((lista_nombre_circuito[i], lista_nacionalidad[i], date.today(
-        ), lista_puntuacion, lista_nombre))
+        lista_circuito.append(Circuito(lista_nombre_circuito[i], lista_nacionalidad[i], os.popen(
+            'date /t').read()[:-1], lista_puntuacion, lista_nombre))
 
 
 def clase_pilotos(lista_nacionalidad, lista_nombre, lista_pilotos):
@@ -42,11 +54,36 @@ class Circuito:
         self.nombre = circuito
         self.pais = pais
         self.fecha = fecha
-        self.resultado
+        lista = []
+        for i in range(10):
+            lista.append(lista_P[i])
+            lista.append(lista_N[i])
+        self.resultado = lista
+
+    def __str__(self):
+        circuito = self.nombre + "-" + self.pais + "-" + self.fecha + ": "
+        for i in self.resultado:
+            if type(i) == type(1):
+                circuito += f'{i}-'
+            else:
+                circuito += f'{i} || '
+        return circuito
 
 
 class Campeonato:
-    pass
+    def __init__(self):
+        self.temporada = "Temporada 1"
+        self.escuderias = lista_escuderias
+        self.resultados = lista_circuito
+    
+    def clasificacion_pilotos(self):
+        pass
+    def clasificacion_escuderias(self):
+        pass
+    def calendario(self):
+        pass
+    def resultado(self):
+        pass
 
 
 class Escuderia:
@@ -76,5 +113,6 @@ if __name__ == "__main__":
     clase_pilotos(lista_nacionalidad, lista_nombre, lista_pilotos)
     clase_escuderias(lista_escuderias, lista_nombre_escuderias,
                      lista_motor, lista_pilotos)
-    for i in lista_escuderias:
-        print(i)
+    clase_circuito(lista_circuito, lista_nombre_circuito,
+                   lista_nacionalidad, lista_puntuacion, lista_nombre)
+    f1=Campeonato()
