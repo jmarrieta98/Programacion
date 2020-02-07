@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-02-05T18:58:51.834816300Z</date>
+  <millis>1580929131834</millis>
+  <nanos>816300</nanos>
+  <sequence>0</sequence>
+  <logger>aprendiendo</logger>
+  <level>INFO</level>
+  <class>com.company.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hola</message>
+</record>
+<record>
+  <date>2020-02-05T18:58:51.863739100Z</date>
+  <millis>1580929131863</millis>
+  <nanos>739100</nanos>
+  <sequence>1</sequence>
+  <logger>aprendiendo</logger>
+  <level>WARNING</level>
+  <class>com.company.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>CUIDADO!</message>
+</record>
+</log>
