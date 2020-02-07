@@ -1,1 +1,0 @@
-print(int(input("Numero 1: "))+int(input("Numero 2: "))+int(input("Numero 3: ")))
