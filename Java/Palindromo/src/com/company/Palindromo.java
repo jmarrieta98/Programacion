@@ -14,7 +14,7 @@ class Main {
     }
 
     public static List<String> Palindromos(List<String> palabras) {
-        List<String> palindromo = new ArrayList<>();
+        List<String> palindromo = null;
         StringBuilder Reverso = new StringBuilder();
         for (String palabra : palabras) {
             Reverso.append(palabra).reverse();
