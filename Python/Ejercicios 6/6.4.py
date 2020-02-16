@@ -54,6 +54,7 @@ class Circuito:
             else:
                 circuito += f'{i} || '
         return circuito
+    
 
 
 class Campeonato:
@@ -63,13 +64,17 @@ class Campeonato:
         self.resultados = lista_circuito
 
     def clasificacion_pilotos(self):
-        clas_pil = {}
+        clas_pil = sorted(lista_pilotos, key=lambda objeto: objeto.puntos, reverse=True)
 
     def clasificacion_escuderias(self):
         clas_esc = {}
 
     def calendario(self):
-        pass
+        for circuito in self.resultados:
+                print(f"{circuito.nombre} - {circuito.fecha}:")
+                for i in range(1,len(circuito.resultado),2):
+                    print(f"{circuito.resultado[i-1]} {circuito.resultado[i]}",end="\t")
+                print()
 
     def resultado(self):
         pass
@@ -96,7 +101,7 @@ class Piloto:
         self.puntos = 0
 
     def __str__(self):
-        return f'{self.nombre}, {self.numero}, {self.nacionalidad}'
+        return f'{self.nombre}'
 
 
 if __name__ == "__main__":
@@ -106,6 +111,15 @@ if __name__ == "__main__":
     clase_circuito(lista_circuito, lista_nombre_circuito,
                    lista_nacionalidad, lista_puntuacion, lista_nombre)
     f1 = Campeonato()
-    lista_clasificacion_pilotos = sorted(lista_pilotos, key=lambda objeto: objeto.puntos, reverse=True)
-    for i in lista_clasificacion_pilotos:
-        print(f"{i.nombre} - {i.puntos}")
+    while True:
+        opcion = input("Escriba la opcion:\t")
+        if opcion.lower() == 'calendario':
+            f1.calendario()
+        elif opcion.lower() == "clasificacion pilotos":
+            pass
+        elif opcion.lower() == "clasificacion escuderias":
+            pass
+        elif opcion.lower() == "fin":
+            break
+        else:
+            print("Error, no has introducido un opcion valida")

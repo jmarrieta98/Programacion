@@ -1,32 +1,34 @@
 package sample;
 
-import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-import static java.lang.Math.round;
 
 public class Controller {
 
-    public ComboBox PFOL;
-    public ComboBox PLM;
-    public ComboBox PSI;
-    public ComboBox PBD;
-    public ComboBox PED;
-    public ComboBox PPRO;
-    public TextField nombre;
-    public TextField apellidos;
-    public Label resultado;
-    public DecimalFormat df = new DecimalFormat("##.##");
+    private static String mensaje2;
+    public static String mensaje;
+    public static ComboBox PFOL;
+    public static ComboBox PLM;
+    public static ComboBox PSI;
+    public static ComboBox PBD;
+    public static ComboBox PED;
+    public static ComboBox PPRO;
+    public static TextField nombre;
+    public static TextField apellidos;
+    public static DecimalFormat df = new DecimalFormat("##.##");
+    public Controller() throws IOException { }
 
-    public void notamedia(ActionEvent actionEvent) {
+    public static String notamedia() {
         ArrayList<Integer> listanotas = new ArrayList<>();
         String nom = nombre.getText();
         String ap = apellidos.getText();
@@ -40,12 +42,24 @@ public class Controller {
         for (int nota : listanotas) media+=nota;
         media/=listanotas.size();
         String numCadena = df.format(media);
-
-        if (media >= 5){
-            resultado.setText(nom+" "+ap+" ha aprobado con "+numCadena);
-        }else{
-            resultado.setText(nom+" "+ap+" ha suspendido con "+numCadena);
+        Parent root = new Parent(){};
+        try {
+            root = FXMLLoader.load(Controller.class.getResource("window2.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        Scene newScene;
+        newScene = new Scene(root,700,700);
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Resultado");
+        newWindow.setScene(newScene);
+        newWindow.show();
+        if (media >= 5){
+            mensaje = (nom+" "+ap+" ha aprobado con "+numCadena);
 
+        }else{
+            mensaje = (nom+" "+ap+" ha suspendido con "+numCadena);
+        }
+        return mensaje;
     }
 }
