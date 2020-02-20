@@ -44,7 +44,8 @@ public class Main {
         //String variable = System.console().readLine(); //Pero esto no funciona en un IDE
         //Hay muchas maneras pero por ahora nos valdrá con esto.
         //Hay que añadir java.util.Scanner a los package del programa al principio del código y luego inicializar el Scanner, que es un evento que espera algo por teclado.
-        Scanner leer = new Scanner(System.in);  // Crea el objeto Scanner, debe estar siempre al principio del main.
+          // Crea el objeto Scanner, debe estar siempre al principio del main.
+        Scanner leer = new Scanner(System.in);
         System.out.println("Introduce si entra o no entra");
         String leido = leer.nextLine(); //Pero no permite añadir texto, por lo que necesitáis de println antes para pedir lo que tengas que pedir
         //Siempre devuelve una string. Es igual que en Python, por lo que ya luego lo convertís a lo que necesitéis.
