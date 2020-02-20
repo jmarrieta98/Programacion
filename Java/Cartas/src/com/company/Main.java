@@ -1,10 +1,7 @@
 package com.company;
 
-import java.text.ParseException;
-import java.util.*;
 
-import static com.company.Main.listaDePalos;
-import static com.company.Main.listaDeValores;
+import java.util.*;
 
 public class Main {
 
