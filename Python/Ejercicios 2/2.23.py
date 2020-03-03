@@ -4,9 +4,11 @@
 #imprimir los contadores y las alturas
 altura = 1
 alturas=[]
-while altura != 0:
+while True:
     altura = float(input("Introduce la altura: "))
-    if altura != 0:
+    if altura == 0:
+        break
+    else:
         alturas.append(altura)
 
 mas17 = mas16 = mas15 = menos15 = 0

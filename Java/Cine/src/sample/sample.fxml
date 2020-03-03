@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="422.0" prefWidth="551.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane fx:id="butacas" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="557.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -16,34 +16,63 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
-    <ImageView id="libre" fx:id="butaca13" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar13" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
         <Image url="@../Libre.png" />
     </ImageView>
-    <ImageView id="libre" fx:id="butaca12" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar12" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
         <Image url="@../Libre.png" />
     </ImageView>
-    <ImageView id="libre" fx:id="butaca11" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar11" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <Image url="@../Libre.png" />
     </ImageView>
-    <ImageView id="libre" fx:id="butaca10" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar10" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <Image url="@../Libre.png" />
     </ImageView>
-    <ImageView id="libre" fx:id="butaca03" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar03" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0">
         <Image url="@../Libre.png" />
     </ImageView>
-    <ImageView id="libre" fx:id="butaca02" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar02" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
         <Image url="@../Libre.png" />
     </ImageView>
-    <ImageView id="libre" fx:id="butaca01" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar01" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <Image url="@../Libre.png" />
     </ImageView>
-    <ImageView id="libre" fx:id="butaca00" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar00" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <ImageView id="libre" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cambiar" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <Image url="@../Libre.png" />
     </ImageView>
-   <Button fx:id="boton" mnemonicParsing="false" onAction="#comprar" prefHeight="51.0" prefWidth="135.0" text="Comprar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
+    <Button id="boton" fx:id="boton" mnemonicParsing="false" onAction="#comprar" prefHeight="51.0" prefWidth="135.0" text="Comprar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Button>
+   <GridPane GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <Label fx:id="label1" alignment="CENTER" prefHeight="63.0" prefWidth="280.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label fx:id="label2" alignment="CENTER" prefHeight="72.0" prefWidth="280.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label fx:id="label3" alignment="CENTER" prefHeight="144.0" prefWidth="394.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </GridPane>
 </GridPane>
