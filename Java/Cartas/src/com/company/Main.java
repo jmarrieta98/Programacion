@@ -4,7 +4,7 @@ package com.company;
 import java.util.*;
 
 public class Main {
-
+    //Lista de palos y valores para las cartas
     public static List<String> listaDePalos = Arrays.asList("Tréboles","Diamantes","Corazones","Picas");
     public static List<String> listaDeValores =  Arrays.asList("As","2","3","4","5","6","7","8","9","10","Sota","Reina","Rey");
 
@@ -27,6 +27,7 @@ public class Main {
         comprobar(jugador,maquina);
     }
     public static void comprobar(Mano jugador, Mano maquina){
+        //Condiciones para la puntuación
      if (jugador.valortotal > 21){
          System.out.println("Has perdido, te has pasado :(");
 
@@ -50,6 +51,13 @@ public class Main {
      System.out.println("Jugador "+jugador.valortotal+" Máquina "+maquina.valortotal);
     }
 
+    /**
+     *
+     * @param leer
+     * @param jugador
+     * @param mazo
+     * @return
+     */
     public static Boolean player(Scanner leer, Mano jugador, Mazo mazo) {
         System.out.print("¿Desea coger otra carta?\t");
         String opcion = leer.nextLine();
