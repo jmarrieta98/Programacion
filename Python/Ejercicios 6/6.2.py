@@ -72,8 +72,7 @@ if __name__ == "__main__":
     jugador = Mano()
     maquina = Mano()
     jugador.cogercarta(mazo)
-    print(
-        f"Tu carta es {jugador.cartas[0]} y el valor total es {jugador.valortotal}")
+    print(f"Tu carta es {jugador.cartas[0]} y el valor total es {jugador.valortotal}")
     while True:
         opcion = input("¿Quieres coger otra carta?\t")
         if opcion.lower() == 's' or opcion.lower() == 'si':
