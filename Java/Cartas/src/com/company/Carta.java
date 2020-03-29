@@ -1,6 +1,7 @@
 package com.company;
 
 public class Carta{
+
     public String palo;
     public String valor;
     public Carta(String pal, String val){

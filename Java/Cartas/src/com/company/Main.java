@@ -9,6 +9,7 @@ public class Main {
     public static List<String> listaDeValores =  Arrays.asList("As","2","3","4","5","6","7","8","9","10","Sota","Reina","Rey");
 
     public static void main(String[] args) {
+
         Mazo mazo = new Mazo();
         Mano jugador = new Mano();
         Mano maquina = new Mano();
