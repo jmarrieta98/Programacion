@@ -1,4 +1,4 @@
-import datetime
+from datetime import *
 import re
 
 
@@ -67,6 +67,13 @@ class Concesionario:
         listacoches = []
         for mar in self.marcas:
             for co in mar.coches:
-                if busqueda.marca.lower() == mar.nombre.lower() and busqueda.modelo.lower() == co.modelo.lower() and busqueda.combustible.lower() == co.combustible.lower() and co.potencia >= busqueda.min_potencia and co.kilometros <= busqueda.max_kilometros  and co.fecha >= busqueda.min_año:
+                if (busqueda.marca.search(mar.nombre) and
+                    busqueda.modelo.search(co.modelo) and
+                    busqueda.combustible.search(co.combustible) and 
+                    co.potencia >= busqueda.min_potencia and
+                    co.kilometros <= busqueda.max_kilometros and 
+                    co.fecha >= busqueda.min_año):
+
                     listacoches.append(co)
+
         return(listacoches)
