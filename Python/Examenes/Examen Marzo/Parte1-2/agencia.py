@@ -32,11 +32,9 @@ class Evento():
     def __str__(self) -> str:
         return f"El evento {self. denominacion} es en la fecha {self.fecha} con {self.dias} dias y de precio {self.precio_Ent} en {self.ciudad}"
 
-    def precio_persona(self, fecha):
-        precio_total = 0
-        dias = int((fecha-self.fecha).days)
-        precio_total = self.precio_Ent+self.ciudad.distancia*0.12+self.ciudad.precioEst*dias
-        return float(precio_total)
+    def precio_persona(self):
+        precio_total = self.precio_Ent+self.ciudad.distancia*0.12+self.ciudad.precioEst*self.dias
+        return precio_total
 
 
 class Agencia():

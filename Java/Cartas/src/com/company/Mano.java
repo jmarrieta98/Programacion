@@ -3,6 +3,11 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Metodo que crea la mano de los jugadores
+ * @author Arrieta
+ */
+
 public class Mano{
     public List<Carta> cartas;
     public int valortotal;
@@ -11,6 +16,10 @@ public class Mano{
         this.valortotal = 0;
     }
 
+    /**
+     *
+     * @param mazo
+     */
     public void cogercarta(Mazo mazo) {
         this.cartas.add(mazo.darCarta());
         this.calcularvalortotal();

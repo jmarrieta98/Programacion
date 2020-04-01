@@ -5,9 +5,14 @@ import java.util.*;
 
 public class Main {
     //Lista de palos y valores para las cartas
+
     public static List<String> listaDePalos = Arrays.asList("Tréboles","Diamantes","Corazones","Picas");
     public static List<String> listaDeValores =  Arrays.asList("As","2","3","4","5","6","7","8","9","10","Sota","Reina","Rey");
 
+    /**
+     * Main del juego
+     * @param args
+     */
     public static void main(String[] args) {
 
         Mazo mazo = new Mazo();
@@ -27,6 +32,12 @@ public class Main {
         } while (maquina.valortotal < 18);
         comprobar(jugador,maquina);
     }
+
+    /**
+     *
+     * @param jugador
+     * @param maquina
+     */
     public static void comprobar(Mano jugador, Mano maquina){
         //Condiciones para la puntuación
      if (jugador.valortotal > 21){
@@ -51,7 +62,6 @@ public class Main {
      }
      System.out.println("Jugador "+jugador.valortotal+" Máquina "+maquina.valortotal);
     }
-
     /**
      *
      * @param leer

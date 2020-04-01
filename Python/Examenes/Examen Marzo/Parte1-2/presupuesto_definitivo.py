@@ -17,10 +17,9 @@ if __name__ == "__main__":
                 except:
                     print("Error al introcudir el numero de personas")
                 else:
-                    print(f"Precio total {personas*evento.precio_persona(datetime.date(2020,3,28))}€")
+                    print(f"Precio total {personas*evento.precio_persona()}€")
                     break
         else: 
             if opcion.lower()== 'fin':
                 break
             else:print("Error, no has escrito bien el evento")
-        

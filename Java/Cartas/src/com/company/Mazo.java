@@ -7,6 +7,10 @@ import java.util.Random;
 import static com.company.Main.listaDePalos;
 import static com.company.Main.listaDeValores;
 
+/**
+ * Metodo que crea el mazo de las cartas
+ * @author Arrieta
+ */
 public class Mazo{
     public List<Carta> cartas = new ArrayList<>();
     public Mazo(){
@@ -19,6 +23,10 @@ public class Mazo{
         this.mezclar();
     }
 
+    /**
+     *Metodo que imprime el mazo
+     * @return Mazo impreso
+     */
     @Override
     public String toString() {
         String imprimir = "";
@@ -28,6 +36,9 @@ public class Mazo{
         return (imprimir);
     }
 
+    /**
+     * Metodo que mezcla las cartas en el mazo
+     */
     public void mezclar(){
         int ncartas = this.cartas.size();
         Random r = new Random();
