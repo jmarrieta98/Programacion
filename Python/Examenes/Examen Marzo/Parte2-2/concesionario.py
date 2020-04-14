@@ -58,12 +58,12 @@ class Concesionario:
         return frase
 
     def buscar(self, busqueda):
-        busqueda.marca
-        busqueda.modelo
-        busqueda.combustible
-        busqueda.min_potencia
-        busqueda.max_kilometros
-        busqueda.min_año
+        #busqueda.marca
+        #busqueda.modelo
+        #busqueda.combustible
+        #busqueda.min_potencia
+        #busqueda.max_kilometros
+        #busqueda.min_año
         listacoches = []
         for mar in self.marcas:
             for co in mar.coches:

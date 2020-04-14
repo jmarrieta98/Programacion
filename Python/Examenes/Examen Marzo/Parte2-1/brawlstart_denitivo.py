@@ -14,7 +14,6 @@ def guardar_cartas():
         cartas['legendario'] = []
         for i in range(0, len(lineas), 2):
             cartas[lineas[i][:-1]].append(lineas[i+1][:-1])
-    brawl.close()
     return cartas
 
 # Guardar cartas del usuario en diccionario y eliminar del diccionario genereal las cartas que ya tenga el usuario
