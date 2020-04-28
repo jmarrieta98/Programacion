@@ -1,5 +1,5 @@
 import pymysql
-from clase8 import *
+from clases_8_1 import *
 
 
 def comprobrartelefono(tel):

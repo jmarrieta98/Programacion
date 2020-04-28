@@ -1,4 +1,4 @@
-from pymysql import *
+from pymysql import connect
 
 class Agenda():
     def __init__(self):
