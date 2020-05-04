@@ -19,8 +19,10 @@ if __name__ == "__main__":
     potencia=  input("Introduce la potencia:\t")
     km = input("Introduce los kilometros máximos:\t")
     fecha = input("Introduce la fecha con '/':\t")
-    if marca: marca = re.compile(marca)
-    else: marca = re.compile(".*")
+    if marca:
+         marca = re.compile(marca)
+    else: 
+        marca = re.compile(".*")
     if modelo: modelo = re.compile(modelo)
     else: modelo = re.compile(".*")
     if combutible: combutible =  re.compile(combutible)

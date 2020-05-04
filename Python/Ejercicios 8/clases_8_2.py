@@ -3,8 +3,13 @@ from pymysql import *
 
 class Agenda():
     def __init__(self):
-        self.conexion = connect("localhost", "root", "root", "agenda2")
+        self.conexion = connect("localhost", "root", "root", "agenda2",port=3307)
         self.cursor = self.conexion.cursor()
+        self.contactos = []
+        self.cursor.execute("Select nombre, telefono, count(G.nombre_p) From contacto C Left join grupo G On C.nombre = G.nombre_p Group by nombre;")
+        self.conexion.commit()
+        for linea in self.cursor:
+            self.contactos.append(Contacto(linea[0],linea[1],linea[2]))
 
     def mostrar(self):
         self.cursor.execute("Select * From contacto")
@@ -36,17 +41,12 @@ class Agenda():
                 listacontacto += f"{nombre}  -->  {telefono}\tG - {grupo}\n"
             return listacontacto
 
-    def alta(self, nombre, telefono, grupo):
+    def alta(self, nombre, telefono):
         if self.existe(nombre):
             return (f"Contacto {nombre} ya existente")
         else:
             try:
-                if grupo.lower() == 'none':
-                    self.cursor.execute(
-                        "insert into contacto(nombre, telefono) values (%s, %s)", (nombre, telefono,))
-                else:
-                    self.cursor.execute(
-                        "insert into contacto values (%s, %s, %s)", (nombre, telefono, grupo,))
+                self.cursor.execute("insert into contacto values (%s, %s)", (nombre, telefono,))
                 self.conexion.commit()
             except MySQLError:
                 return("Error de sql")
@@ -66,18 +66,18 @@ class Agenda():
             else:
                 return (f"Contacto {nombre} ha sido borrado")
 
-    def modificar(self, contacto, nombre, telefono, grupo):
+    def modificar(self, contacto, nombre, telefono):
         if not self.existe(contacto.nombre):
             return (f"Contacto {nombre} no existente")
         else:
             try:
-                self.cursor.execute('Update contacto set nombre = %s, telefono = %s, grupo = %s Where nombre = %s and telefono = %s ', (
-                    nombre, telefono, grupo, contacto.nombre, contacto.telefono,))
+                self.cursor.execute('Update contacto set nombre = %s, telefono = %s Where nombre = %s and telefono = %s;', (
+                    nombre, telefono, contacto.nombre, contacto.telefono,))
                 self.conexion.commit()
             except MySQLError:
                 return("Error de sql")
             else:
-                return (f"Contacto {contacto.nombre} ha sido modificado por {nombre} - {telefono} - {grupo}")
+                return (f"Contacto {contacto.nombre} ha sido modificado por {nombre} - {telefono}")
 
     def contacto(self, nombre):
         self.cursor.execute(
