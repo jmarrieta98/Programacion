@@ -5,6 +5,9 @@ class Agenda():
     def __init__(self):
         self.conexion = connect("localhost", "root", "root", "agenda2",port=3307)
         self.cursor = self.conexion.cursor()
+        self.actualizar()
+
+    def actualizar(self):
         self.contactos = []
         self.cursor.execute("Select nombre, telefono, count(G.nombre_p) From contacto C Left join grupo G On C.nombre = G.nombre_p Group by nombre;")
         self.conexion.commit()
@@ -27,6 +30,17 @@ class Agenda():
             return True
         else:
             return False
+    def existe_grupo(self, nombre_p, nombre_s):
+        self.cursor.execute("Select * From grupo")
+        self.conexion.commit()
+        lista_p = lista_s = []
+        for contacto1, contacto2 in self.cursor:
+            lista_p.append(contacto1)
+            lista_s.append(contacto2)
+        if nombre_p in lista_p and nombre_s in lista_s:
+            return True
+        else:
+            return False
 
     def consulta(self, texto):
         try:
@@ -37,8 +51,8 @@ class Agenda():
             return("Error, fallo sql")
         else:
             listacontacto = ''
-            for nombre, telefono, grupo in self.cursor:
-                listacontacto += f"{nombre}  -->  {telefono}\tG - {grupo}\n"
+            for nombre, telefono in self.cursor:
+                listacontacto += f"{nombre}  -->  {telefono}\n"
             return listacontacto
 
     def alta(self, nombre, telefono):
@@ -51,6 +65,7 @@ class Agenda():
             except MySQLError:
                 return("Error de sql")
             else:
+                self.actualizar()
                 return (f"Contacto {nombre} añadido")
 
     def borrar(self, nombre):
@@ -64,6 +79,7 @@ class Agenda():
             except MySQLError:
                 return ("Error de sql")
             else:
+                self.actualizar()
                 return (f"Contacto {nombre} ha sido borrado")
 
     def modificar(self, contacto, nombre, telefono):
@@ -77,11 +93,12 @@ class Agenda():
             except MySQLError:
                 return("Error de sql")
             else:
+                self.actualizar()
                 return (f"Contacto {contacto.nombre} ha sido modificado por {nombre} - {telefono}")
 
     def contacto(self, nombre):
         self.cursor.execute(
-            "Select telefono, grupo From contacto Where nombre REGEXP %s ", (nombre.lower(),))
+            "Select telefono From contacto Where nombre REGEXP %s ", (nombre.lower(),))
         self.conexion.commit()
         telefono = ''
         grupo = ''
@@ -89,6 +106,37 @@ class Agenda():
             telefono = t
             grupo = g
         return telefono, grupo
+
+    
+    def add_grupo(self,nombre_p,nombre_s):
+        if not self.existe(nombre_s):
+            return (f"Contacto {nombre_s} no existente")
+        elif self.existe_grupo(nombre_p,nombre_s):
+            return (f"Amistad existente")
+        else:
+            try:
+                self.cursor.execute("insert into grupo values (%s, %s)", (nombre_p, nombre_s,))
+                self.conexion.commit()
+            except MySQLError:
+                return("Error de sql")
+            else:
+                self.actualizar()
+                return (f"Amistad añadida")
+
+    def del_grupo(self,nombre_p, nombre_s):
+        if not self.existe(nombre_s):
+            return (f"Contacto {nombre_s} no existente")
+        elif not self.existe_grupo(nombre_p,nombre_s):
+            return (f"Amistad no existente")
+        else:
+            try:
+                self.cursor.execute("delete from grupo where lower(nombre_p) = %s and lower(nombre_s) = %s", (nombre_p.lower(),nombre_s.lower(),))
+                self.conexion.commit()
+            except MySQLError:
+                return("Error de sql")
+            else:
+                self.actualizar()
+                return (f"Amistad borrada")
 
 
 class Contacto(object):
